@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Iniciar Sesión</a></li>
+                <li><a href="#Turno">Agende su turno</a></li>
+                <li><a href="">Mis turnos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="Turno">
+            <h1>AGENDE SU TURNO</h1>
+            <div class="Turno__form">
+                <form>
+                    <fieldset>
+                        <div class="Turno__campos">
+                            <select name="doctor" id="doctorSelect" required>
+                                <option value="" selected disabled>--Seleccione el Doctor--</option>
+                                <option value="Lopez">Dr Juan Lopez (Oftalmologo)</option>
+                                <option value="Sarmiento">Dra Silvia Sarmiento (Traumatologa)</option>
+                                <option value="Juarez">Dr Sebastian Juarez (Cardiologo)</option>
+                                <option value="Ortega">Dra Juana Ortega (Dentista)</option>
+                            </select>
+                        </div>
+                        <div class="Turno__campos">
+                            <label for="date">Seleccione la fecha:
+                                <input type="date" name="date" id="date" min="2025-07-06" max="2025-12-30" required>
+                            </label>
+                        </div>
+                        <div class="Turno__campos">
+                            <label for="time">Seleccione el horario: 
+                                <input type="time" id="time" min="08:00" max="18:00" step="1800" required>
+                            </label>
+                       </div>
+                       <button type="submit" id="Agendar">Agendar</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
