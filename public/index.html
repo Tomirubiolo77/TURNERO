@@ -21,10 +21,10 @@
         <section id="Turno">
             <h1>AGENDE SU TURNO</h1>
             <div class="Turno__form">
-                <form>
+                <form class="formulario">
                     <fieldset>
                         <div class="Turno__campos">
-                            <select name="doctor" id="doctorSelect" required>
+                            <select name="doctor" id="doctorSelect" required class="Turno__campos--input">
                                 <option value="" selected disabled>--Seleccione el Doctor--</option>
                                 <option value="Lopez">Dr Juan Lopez (Oftalmologo)</option>
                                 <option value="Sarmiento">Dra Silvia Sarmiento (Traumatologa)</option>
@@ -42,7 +42,7 @@
                                 <input type="time" id="time" min="08:00" max="18:00" step="1800" required>
                             </label>
                        </div>
-                       <button type="submit" id="Agendar">Agendar</button>
+                       <button type="submit" id="Agendar" class="Turno__campos--input">Agendar</button>
                     </fieldset>
                 </form>
             </div>
