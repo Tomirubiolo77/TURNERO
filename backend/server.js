@@ -8,27 +8,39 @@ app.use(express.static('public'));
 
 // Leer horarios ocupados desde archivo
 app.get('/api/horarios-ocupados', (req, res) => {
-  const data = fs.readFileSync('backend/db.json', 'utf-8');
-  const horarios = JSON.parse(data);
-  res.json(horarios);
-});
+  const fecha = req.query.fecha; // por ejemplo: "2025-07-14"
 
-// Guardar nueva reserva
-app.post('/api/reservar', (req, res) => {
-  const nuevo = req.body; // { horario: "08:30" }
-
-  const data = fs.readFileSync('backend/db.json', 'utf-8');
-  const horarios = JSON.parse(data);
-
-  if (horarios.includes(nuevo.horario)) {
-    return res.status(400).json({ mensaje: 'Horario ya reservado' });
+  if (!fecha) {
+    return res.status(400).json({ mensaje: 'Falta la fecha en la consulta' });
   }
 
-  horarios.push(nuevo.horario);
-  fs.writeFileSync('backend/db.json', JSON.stringify(horarios, null, 2));
-  res.status(200).json({ mensaje: 'Reservado con éxito' });
-});
+  const data = fs.readFileSync('backend/db.json', 'utf-8');
+  const json = JSON.parse(data);
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  const horarios = json[fecha] || []; // Si no hay datos para esa fecha, devolvés []
+  res.json(horarios);
+});
+// Guardar nueva reserva
+app.post('/api/reservar', (req, res) => {
+  const { fecha, horario } = req.body;
+
+  if (!fecha || !horario) {
+    return res.status(400).json({ mensaje: 'Faltan datos: fecha u horario' });
+  }
+
+  const data = fs.readFileSync('backend/db.json', 'utf-8');
+  const json = JSON.parse(data);
+
+  if (!json[fecha]) {
+    json[fecha] = [];
+  }
+
+  if (json[fecha].includes(horario)) {
+    return res.status(400).json({ mensaje: 'Horario ya reservado para esa fecha' });
+  }
+
+  json[fecha].push(horario);
+
+  fs.writeFileSync('backend/db.json', JSON.stringify(json, null, 2));
+  res.status(200).json({ mensaje: 'Reservado con éxito' });
 });
