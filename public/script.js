@@ -4,6 +4,7 @@ form.addEventListener('submit', (e) => {
   mostrarMensaje(); 
 });
 
+
 function mostrarMensaje () {
     const mensaje = document.createElement('P');
     mensaje.textContent = 'SU TURNO HA SIDO AGENDADO';
@@ -21,6 +22,7 @@ function mostrarMensaje () {
     setTimeout(() => {
         mensaje.remove(); // mismo tiempo que dura fadeOut
     }, 5000); // empieza fadeOut antes de los 5s
+    form.reset();
 };
 
 function renderHorariosDisponibles(fecha, horariosOcupados) {
@@ -38,10 +40,6 @@ function renderHorariosDisponibles(fecha, horariosOcupados) {
     option.textContent = horario;
     selectHora.appendChild(option);
   }
-  if (!horariosOcupados.includes(horario)) {
-  selectHora.appendChild(option);
-}
-
 }
 
 renderHorariosDisponibles();
