@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Savate:ital,wght@0,200..900;1,200..900&family=Staatliches&family=Tektur:wght@400..900&display=swap');
 
 :root {
-    --primario:#1f8026;
-    --primarioOscuro:#8fa7ef;
-    --secundario:#001d9c;
-    --secundarioOscuro: #000000;
+    --primario:#F9B872;
+    --secundario: #DDD0C8;
+    --backbody:#213F99 ;
     --blanco: #FFF;
     --negro:#000;
 
@@ -22,9 +21,10 @@ html {
 
 /**GLOBALES**/
 body {
-    background-color: var(--primario);
+    background-color: var(--backbody);
     font-size: 1.6rem;
     line-height: 1.5;
+    padding: 3rem;
 }
 
 p {
@@ -41,20 +41,26 @@ a {
 a:hover {
     color:var(--blanco);
     transition: 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--negro);
+    color: var(--blanco);
+    transition: 0.5s;
+    box-shadow: 0 0.8rem 1.6rem rgba(4, 12, 135, 0.5);
+    cursor: pointer;
 }
 
 img {
     width: 100%;
 }
 
-.contenedor {
-    max-width: 120rem;
-    margin:0 auto; /**CENTRA EL CONTENIDO**/
-}
+
 
 h1, h2, h3 {
     text-align: center;
-    color:var(--secundario);
+    color:var(--negro);
     font-family: var(--fuentePrincipal);
 }
 
@@ -78,30 +84,136 @@ nav ul {
     justify-content: end;
 }
 
-.formulario {
-    border-radius: 1.5rem;
-    /* width: 35rem; */
-    margin: 0 auto;
+label {
+    font-weight: bold;
 }
 
-.Turno__form {
-    display: flex;
-    justify-content: center;
+textarea {
+    resize: none;
 }
 
-.Turno__form form fieldset {
+table, th, td {
+    border: solid var(--blanco) 0.2rem;
+}
+
+
+/* Formulario Login */
+.FormLogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centrado horizontal interno */
+  text-align: center;
+  border: var(--negro) solid 0.3rem;
+  border-radius: 1.5rem;
+  background-color: var(--primario);
+}
+
+.FormLogin__border {
     border: var(--negro) 0.4rem solid;
     border-radius: 1.5rem;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding-top:1.7rem; 
+    background-color: var(--secundario);
 }
 
-input, select, button {
+.FormLogin__border--input{
+    border: var(--negro) 0.2rem solid;
+    border-radius: 0.7rem;
+    padding: .8rem;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+
+.FormLogin__border--button {
+    border-radius: 0.7rem;
+    border: var(--negro) 0.2rem solid;
+    width: 40%;
+    padding: 0.8rem;
+}
+
+#login-button {
+    margin-top: 1rem;
+}
+
+
+
+/* Formulario de registro */
+.FormRegister {
+    border: var(--negro) 0.4rem solid;
+    border-radius: 1.5rem;
+    background-color: var(--secundario);
+}
+
+.FormRegister__Campos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: -1rem;
+    padding: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.FormRegister__Campos--input {
     border-radius: 0.7rem;
     border: var(--negro) solid 0.2rem;
     padding: .8rem;
     width: 100%;
 }
 
-.Turno__campos {
+.FormRegister__Campos--button {
+    margin: 0 auto;
+    border-radius: 0.7rem;
+    border: var(--negro) 0.2rem solid;
+    width: 40%;
+    padding: 0.8rem;
+}
+
+
+/* Formulario AgendarTurno */
+/* Se centra el form y todo su contenido*/
+.Turno__Form {
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; /* centrado horizontal interno */
+    text-align: center;
+    border: var(--negro) 0.4rem solid;
+    border-radius: 1.5rem;
+    margin: 0 auto;
+    background-color: var(--primario);
+}
+
+.Turno__Campos {
+    /* display: flex; */
     margin-bottom: 2rem;
 }
+
+
+.Turno__Form--Border {
+    border: var(--negro) 0.4rem solid;
+    border-radius: 1.5rem;
+    background-color: var(--secundario);
+    width: 100%;
+    max-width: 30rem;
+}
+
+
+.Turno__Campos--input {
+    border-radius: 0.7rem;
+    border: var(--negro) solid 0.2rem;
+    padding: .8rem;
+    width: 100%;
+}
+
+.Turno__Campos--textarea {
+    border-radius: 0.7rem;
+    border: var(--negro) solid 0.2rem;
+
+}
+
+
+
+/* Seccion mis turnos */

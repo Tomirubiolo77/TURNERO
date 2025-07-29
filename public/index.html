@@ -4,53 +4,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <nav class="">
-            <ul>
-                <li><a href="">Iniciar Sesión</a></li>
-                <li><a href="#Turno">Agende su turno</a></li>
-                <li><a href="">Mis turnos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="Turno">
-            <h1>AGENDE SU TURNO</h1>
-            <div class="Turno__form">
-                <form class="formulario">
-                    <fieldset>
-                        <div class="Turno__campos">
-                            <select name="doctor" id="doctorSelect" required class="Turno__campos--input">
-                                <option value="" selected disabled>--Seleccione el Doctor--</option>
-                                <option value="Lopez">Dr Juan Lopez (Oftalmologo)</option>
-                                <option value="Sarmiento">Dra Silvia Sarmiento (Traumatologa)</option>
-                                <option value="Juarez">Dr Sebastian Juarez (Cardiologo)</option>
-                                <option value="Ortega">Dra Juana Ortega (Dentista)</option>
-                            </select>
-                        </div>
-                        <div class="Turno__campos">
-                            <label for="date">Seleccione la fecha:
-                                <input type="date" name="date" id="date" min="2025-07-06" max="2025-12-30" required>
-                            </label>
-                        </div>
-                        <div class="Turno__campos">
-                            <select name="hoarario" id="horario" class="selectHora" required>
-                                <option value="" selected disabled>--Seleccione el horario--</option>
-                            </select>
-                       </div>
-                       <button type="submit" id="Agendar" class="Turno__campos--input">Agendar</button>
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer>
 
-    </footer>
+<!-- LOGIN -->
+
+    <div id="login">
+        <header>
+            
+        </header>
+        
+        <main>
+            <form class="FormLogin" id="formLogin">
+                <h1>Ingrese sus datos para acceder a su informacion de turnos</h1>
+                <fieldset class="FormLogin__border">
+                    <div>
+                        <label for="loginDNI">Ingresa tu DNI</label>
+                        <input type="Number" id="loginDNI" name="loginDNI"  maxlength="8" placeholder="Ingrese su DNI" oninput="limitarLongitud(this)" class="FormLogin__border--input" required>
+                    </div>
+                    <div>
+                        <label for="loginPassword">Ingresa tu contraseña</label>
+                        <input type="password" id="loginPassword" name="loginPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" placeholder="Ingrese su contraseña" class="FormLogin__border--input" required>
+                    </div>
+                        
+                    <div>
+                        <button type="submit" id="loginButton" class="FormLogin__border--input">INICIAR SESIÓN</button>
+                    </div>
+                </fieldset>
+                <fieldset class="FormLogin__border">
+                    <h3>si es tu primera vez utilizando nuestro sitio web, registrate aquí</h3>
+                    <!-- con este id hacer funcion en js     -->
+                    <button type="button" id="goToRegister" class="FormLogin__border--button">REGISTRARSE</button>
+                </fieldset>
+            </form>
+        </main>
+        
+        <footer>
+
+        </footer>
+    </div>
+
+<!-- REGISRO -->
+
+    <div id="register">
+        <header>
+
+        </header>
+        
+        <main>
+            <form class="FormRegister" id="formRegister">
+                <h1>Registrate</h1>
+                <div class="FormRegister__Campos">
+                    <label for="nombres">Nombre/s</label> 
+                    <input type="text" name="nombres" id="nombres" placeholder="Ingresa tus nombres" class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="apellidos">Apellido/s</label> 
+                    <input type="text" name="apellidos" id="apellidos" placeholder="Ingresa tus apellidos" class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="register-dni">D.N.I</label> 
+                    <input type="number" name="register-dni" id="register-dni" placeholder="Ingresa tu número de documento" title="Coloque el DNI sin los puntos Ej (12345678)" maxlength="8" oninput="limitarLongitud(this)" class="FormRegister__Campos--input" required>
+                </div> 
+                <div class="FormRegister__Campos">
+                    <label for="genero">Género</label>
+                    <select name="genero" id="genero" class="FormRegister__Campos--input" required>
+                        <option value="" selected disabled>--Selecciona tu género--</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="fechaNac">Fecha de nacimiento</label> 
+                    <input type="text" id="fechaNac" name="fechaNac" placeholder="Ingresa tu fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" class="FormRegister__Campos--input" required>
+                    <!--onfocus transforma el input a type date cuando se posiciona sobre el, onblur lo vuelve a text cuando se deja de estar encima del input -->
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="obraSocial">Obra social</label>
+                    <select name="obraSocial" id="obraSocial" class="FormRegister__Campos--input" required>
+                        <option value="" selected disabled>--Seleccione su obra social--</option>
+                        <option value="Sancor">Sancor</option>
+                        <option value="SumeSalud">SumeSalud</option>
+                        <option value="Osecac">Osesac</option>
+                    </select>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="planObra">Plan de la obra social</label>
+                    <select name="planObra" id="planObra" class="FormRegister__Campos--input" required>
+                        <option value="" selected disabled>--Seleccione su plan--</option>
+                        <option value="">Se agregaran luego dinamicamente</option>
+                    </select>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="direccion">Dirección</label> 
+                    <input type="text" name="direccion" id="direccion" placeholder="Ingrese su Dirección" class="FormRegister__Campos--input" required>
+                </div>             
+                <div class="FormRegister__Campos">
+                    <label for="localidad">Localidad</label>
+                    <select name="localidad" id="localidad" class="FormRegister__Campos--input" required>
+                        <option value="" selected disabled>--Seleccione su localidad--</option>
+                        <option value="lasVarillas">Las Varillas</option>
+                        <option value="lasVaras">Las Varas</option>
+                        <option value="laspiur">Laspiur</option>
+                    </select>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="provincia">Provincia</label>
+                    <select name="provincia" id="provincia" class="FormRegister__Campos--input" required>
+                        <option value="" disabled selected>--Seleccione su provincia--</option>
+                        <option value="cordoba">Córdoba</option>
+                        <option value="">Se agregara automaticamente</option>
+                    </select>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="telefono">Teléfono</label>
+                    <input type="number" name="telefono" id="telefono" placeholder="Ingrese su teléfono"class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Ingresa tu email" class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="registerPassword">Ingresa una contraseña</label>
+                    <input type="password"
+                        name="registerPassword"
+                        id="registerPassword"
+                        placeholder="Ingresa tu contraseña"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                        title="Debe tener al menos 8 caracteres, incluyendo letras y números" 
+                        class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <label for="repeatPassword">Confirma tu contraseña</label>
+                    <input type="password"
+                        name="repeatPassword"
+                        id="repeatPassword"
+                        placeholder="Confirma tu contraseña"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                        title="Debe tener al menos 8 caracteres, incluyendo letras y números" 
+                        class="FormRegister__Campos--input" required>
+                </div>
+                <div class="FormRegister__Campos">
+                    <button type="button" id="registerButton" class="FormRegister__Campos--button">Registrarme</button>
+                </div>
+            </form>    
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+        
+<!-- AGENDAR TURNO -->
+
+    <div id="agendarTurno">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#" id="navMisTurnos">Mis turnos</a></li>
+                    <li><a href="#" class="logout">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+                    <form class="Turno__Form">
+                        <h1>AGENDE SU TURNO</h1>
+                        <fieldset class="Turno__Form--Border">
+                            <div class="Turno__Campos">
+                                <select name="doctor" id="doctorSelect" required class="Turno__Campos--input">
+                                    <option value="" selected disabled>--Seleccione el Doctor--</option>
+                                    <option value="Lopez">Dr Juan Lopez (Oftalmologo)</option>
+                                    <option value="Sarmiento">Dra Silvia Sarmiento (Traumatologa)</option>
+                                    <option value="Juarez">Dr Sebastian Juarez (Cardiologo)</option>
+                                    <option value="Ortega">Dra Juana Ortega (Dentista)</option>
+                                </select>
+                            </div>
+                            <div class="Turno__Campos">
+                                <label for="date">Seleccione la fecha:
+                                    <input type="date" name="date" id="fecha-turno"  max="2025-12-30" class="Turno__Campos--input" required>
+                                </label>
+                            </div>
+                            <div class="Turno__Campos">
+                                <select name="horarioTurno" id="horarioTurno" class="Turno__Campos--input" required>
+                                    <option value="" selected disabled>--Seleccione el horario--</option>
+                                </select>
+                            </div>
+                            <div class="Turno__campos">
+                                <label for="observaciones">Observaciones:</label> 
+                            </div>
+                            <div class="Turno__Campos">
+                                <!-- <label for="observaciones">Observaciones:</label> -->
+                                <textarea name="observaciones" id="observaciones" cols="34" rows="8" placeholder="Agrega observaciones sobre el turno (opcional)" class="Turno__Campos--textarea"></textarea>
+                            </div>
+                        <button type="submit" id="Agendar" class="Turno__Campos--input">Agendar</button>
+                        </fieldset>
+                    </form>
+        </main>
+        
+        <footer>
+
+        </footer>
+    </div>
+
+<!-- MIS TURNOS -->
+
+    <div id="misTurnos">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#" id="navAgendar">Agendar Turno</a></li>
+                    <li><a href="#" class="logout">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Mis turnos</h1>
+            <table>
+                <caption>
+                    Ante cualquier consulta comunicarse al 3533489876
+                </caption>
+
+                <thead>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Doctor/a</th>
+                    <th scope="col">Observaciones</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>17/05/2025</td>
+                        <td>17:00</td>
+                        <td>Horacio</td>
+                        <td>Dolor de tobillo derecho</td>
+                    </tr>
+                    <tr>
+                        <td>13/06/2025</td>
+                        <td>14:30</td>
+                        <td>Hugo</td>
+                        <td>Dolor de cabeza, junto con resfriado</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    
+                </tfoot>
+            </table>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
